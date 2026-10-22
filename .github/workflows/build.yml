@@ -19,7 +19,7 @@ jobs:
           cp "$F" www/fonts/Vazirmatn.woff2
       - run: npx cap add android
       - name: Permissions
-        run: sed -i 's#<application#<uses-permission android:name="android.permission.POST_NOTIFICATIONS"/><uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/><uses-permission android:name="android.permission.USE_EXACT_ALARM"/>\n    <application#' android/app/src/main/AndroidManifest.xml
+        run: sed -i 's#<application#<uses-permission android:name="android.permission.POST_NOTIFICATIONS"/><uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/><uses-permission android:name="android.permission.USE_EXACT_ALARM"/><uses-permission android:name="android.permission.VIBRATE"/><uses-permission android:name="android.permission.WAKE_LOCK"/><uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>\n    <application#' android/app/src/main/AndroidManifest.xml
       - run: npx cap sync android
       - run: cd android && chmod +x gradlew && ./gradlew assembleDebug
       - uses: actions/upload-artifact@v4
